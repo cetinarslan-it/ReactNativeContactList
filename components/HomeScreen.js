@@ -2,16 +2,21 @@ import { Pressable, StyleSheet, View, Text } from "react-native";
 
 const HomeScreen = ({ navigation }) => {
   return (
-    <View style={styles.container}>
-      <Pressable
-        style={styles.button}
-        onPress={() => {
-          navigation.navigate("Contacts");
-        }}
-      >
-        <Text style={styles.text}>Contact List</Text>
-      </Pressable>
-    </View>
+    <>
+      <View>
+        <Text style={styles.listHeader}>Cetin's PhoneBook</Text>
+      </View>
+      <View style={styles.container}>
+        <Pressable
+          style={styles.button}
+          onPress={() => {
+            navigation.navigate("Contacts");
+          }}
+        >
+          <Text style={styles.text}>Contact List</Text>
+        </Pressable>
+      </View>
+    </>
   );
 };
 
@@ -21,7 +26,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",    
+    justifyContent: "center",
+  },
+  listHeader: {
+    fontSize: 45,
+    fontWeight: "bold",
+    textAlign: "center",
   },
   button: {
     alignItems: "center",
@@ -33,7 +43,8 @@ const styles = StyleSheet.create({
     backgroundColor: "blue",
     marginBottom: 10,
     shadowColor: "black",
-    shadowRadius: 8, 
+    shadowRadius: 8,
+    marginTop:-400,
   },
   text: {
     fontSize: 18,

@@ -15,6 +15,9 @@ const Details = ({ route, navigation: { goBack } }) => {
   return (
     <View style={styles.container}>
       <View style={{ marginTop: 5, marginBottom: 10 }}>
+      <View>
+        <Text style={styles.listHeader}>Details</Text>
+      </View>
         <Image
           style={{ height: 300, width: 380, marginBottom:5 }}
           source= {customer.picture.large}
@@ -42,7 +45,7 @@ const Details = ({ route, navigation: { goBack } }) => {
 
       <View style={styles.buttonContainer}>
         <Pressable style={styles.Button} onPress={() => goBack()}>
-          <Text style={styles.buttonText}>To Contacts</Text>
+          <Text style={styles.buttonText}>Contact List</Text>
         </Pressable>
 
         <Pressable
@@ -67,6 +70,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+  },
+  listHeader: {
+    fontSize: 30,
+    fontWeight: "bold",
+    textAlign: "center",
   },
   titleText: {
     fontSize: 25,
