@@ -1,49 +1,110 @@
-import { TextInput, Button, StyleSheet, Text, View } from 'react-native'
-import React, { useState } from 'react'
+import {
+  TextInput,
+  StyleSheet,
+  Text,
+  View,
+  Pressable,
+  Image,
+} from "react-native";
+import React, { useState } from "react";
 
-const Details = ({route, navigation: { goBack }}) => {
-
+const Details = ({ route, navigation: { goBack } }) => {
   const { customer, index, handleCustomers } = route.params;
-  const [text, setText] = useState('')
+  const [text, setText] = useState("");
 
   return (
     <View style={styles.container}>
-      <Text>
-        Name: {`${customer.name.title} ${customer.name.first} ${customer.name.last}`}        
-      </Text>
-      <Text>
-        Lives at {`${customer.location.street.name} ${customer.location.street.number}`}
-      </Text>
-      <Button style={styles.container} onPress={() => goBack()} title='Go Back To Contacts'/>
+      <View style={{ marginTop: 5, marginBottom: 10 }}>
+        <Image
+          style={{ height: 300, width: 380, marginBottom:5 }}
+          source= {customer.picture.large}
+        />
+        <Text style={styles.titleText}>
+          Name     :{" "}
+          {`${customer.name.title} ${customer.name.first} ${customer.name.last}`}
+        </Text>
+        <Text style={styles.titleText}>
+          Address :{" "}
+          {`${customer.location.street.name} ${customer.location.street.number}`}
+        </Text>
+      </View>
+
       <TextInput
         style={styles.textArea}
         value={text}
         onChangeText={setText}
         underlineColorAndroid="transparent"
-        placeholder="Type something"
+        placeholder="   Type something..."
         placeholderTextColor="grey"
-        numberOfLines={10}
+        numberOfLines={40}
         multiline={true}
       />
-      <Button title='Add Information' onPress={() => {customer.AdditionalInformation = text; handleCustomers(customer, index)}}/>
-    </View>
-  )
-}
 
-export default Details
+      <View style={styles.buttonContainer}>
+        <Pressable style={styles.Button} onPress={() => goBack()}>
+          <Text style={styles.buttonText}>To Contacts</Text>
+        </Pressable>
+
+        <Pressable
+          style={styles.Button}
+          onPress={() => {
+            customer.AdditionalInformation = text;
+            handleCustomers(customer, index);
+          }}
+        >
+          <Text style={styles.buttonText}>Add Text</Text>
+        </Pressable>
+      </View>
+    </View>
+  );
+};
+
+export default Details;
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-
-    textArea: {
-      borderWidth: 1,
-      height: 200,
-      width: 200,
-      borderColor: 'black',
-    }
-  });
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  titleText: {
+    fontSize: 25,
+  },
+  textArea: {
+    backgroundColor: "ghostwhite",
+    borderColor: "black",
+    borderWidth: 1,
+    height: 100,
+    width: 380,
+    marginTop: 10,
+    marginBottom: 10,
+  },
+  buttonContainer: {
+    flex: 1,
+    flexDirection: "row",
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "space-around",
+    marginBottom: -140,
+  },
+  Button: {
+    paddingVertical: 16,
+    paddingHorizontal: 12,
+    borderRadius: 10,
+    width: 150,
+    height: 50,
+    backgroundColor: "blue",
+    shadowColor: "black",
+    shadowRadius: 8,
+    elevation: 7,
+    margin: 15,
+  },
+  buttonText: {
+    color: "white",
+    fontWeight: "bold",
+    fontSize: 18,
+    textAlign: "center",
+    lineHeight: 20,
+  },
+});

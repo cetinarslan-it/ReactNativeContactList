@@ -1,6 +1,3 @@
-import React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
 import HomeScreen from './components/HomeScreen';
 import Contacts from './components/Contacts';
 import Details from './components/Details';
@@ -21,4 +18,3 @@ const App = () => {
 }
 
 export default App;
-

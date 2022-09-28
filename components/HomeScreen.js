@@ -1,31 +1,45 @@
-import { Button, StyleSheet, View } from 'react-native'
-import React from 'react'
+import { Pressable, StyleSheet, View, Text } from "react-native";
 
-const HomeScreen = ({navigation}) => {
+const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-        <Button
-          onPress={() => {
-              navigation.navigate('Contacts')
-            }}
-          title='Go To Contacts'
-        />
+      <Pressable
+        style={styles.button}
+        onPress={() => {
+          navigation.navigate("Contacts");
+        }}
+      >
+        <Text style={styles.text}>Contact List</Text>
+      </Pressable>
     </View>
-  )
-}
+  );
+};
 
-export default HomeScreen
+export default HomeScreen;
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-});
-const buttonStyles = StyleSheet.create({
-    container: {
-        padding: 10
-    }
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",    
+  },
+  button: {
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 16,
+    paddingHorizontal: 12,
+    borderRadius: 10,
+    elevation: 3,
+    backgroundColor: "blue",
+    marginBottom: 10,
+    shadowColor: "black",
+    shadowRadius: 8, 
+  },
+  text: {
+    fontSize: 18,
+    lineHeight: 20,
+    fontWeight: "bold",
+    letterSpacing: 1,
+    color: "white",
+  },
 });
